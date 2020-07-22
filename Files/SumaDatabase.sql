@@ -1,0 +1,23 @@
+CREATE DATABASE SumaDatabase;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
