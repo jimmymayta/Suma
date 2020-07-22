@@ -1,7 +1,7 @@
 Notas 
 
 www.suma.com -> Mercado
-www.suma.com/Login -> Mercado
+www.suma.com/Login -> Login de usuario
 www.suma.com/Suma -> Mercaddo con usuario
 
 
