@@ -1,0 +1,29 @@
+NOtas.
+
+/Suma -> Principal
+/Login -> Login
+
+
+
+Registro->Usuarios
+Roles
+
+Productos
+Ventas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
