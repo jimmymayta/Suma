@@ -11,6 +11,13 @@ Roles
 Productos
 Ventas
 
+Principal = Suma -> pagian de mercado
+
+Registro->Usuarios
+Roles
+Login
+Productos
+Ventas
 
 
 

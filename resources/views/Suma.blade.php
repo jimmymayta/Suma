@@ -7,13 +7,13 @@
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/1000855.svg') }}" />
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 </head>
-<body><br>  
+<body><br>
   <div class="container">
     <div class="card text-center">
       <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Suma Aljasiñani</a>
+            <a class="nav-link active" href="/">Suma Aljasiñani</a>
           </li>
 
           <li class="nav-item">
@@ -37,6 +37,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{ $pro->nombres }}</h5>
                   <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <a href="#" class="btn btn-primary">Hacer pedido</a>
                 </div>
               </div>
             </div>
@@ -52,9 +53,6 @@
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>
-
-
-<?php echo "Nombres<br><br>";
 
 //foreach ($products as $pro) {
 //  echo $pro['nombres']."<br>";
