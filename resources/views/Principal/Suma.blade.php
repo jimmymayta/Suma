@@ -9,6 +9,7 @@
 </head>
 <body><br>
 <div class="container">
+    <a href="{{ route('Registro') }}">Registro</a>
     <div class="card text-center">
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
@@ -26,24 +27,28 @@
 
             </ul>
         </div>
+        <?php
+            $Dat = isset($Usu)?$Usu:null;
+            echo $Dat;
+        ?>
         <div class="card-body">
             <h5 class="card-title">Special title treatment</h5>
             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
             <div class="row row-cols-1 row-cols-md-3">
-                @foreach ($products as $pro)
+{{--                @foreach ($products as $pro)--}}
                     <div class="col mb-4">
                         <div class="card">
                             <img src="images/20200723090288.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $pro->nombres }}</h5>
+{{--                                <h5 class="card-title">{{ $pro->nombres }}</h5>--}}
                                 <p class="card-text">This is a longer card with supporting text below as a natural
                                     lead-in to additional content. This content is a little bit longer.</p>
                                 <a href="#" class="btn btn-primary">Hacer pedido</a>
                             </div>
                         </div>
                     </div>
-                @endforeach
+{{--                @endforeach--}}
             </div>
 
         </div>
@@ -56,9 +61,7 @@
 </body>
 </html>
 
-//foreach ($products as $pro) {
-//  echo $pro['nombres']."<br>";
-//}
+
 
 
 

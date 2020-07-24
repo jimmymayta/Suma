@@ -3,15 +3,40 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Personal;
 
-class UsuarioRegistroController extends Controller {
+class UsuarioRegistroController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function UsuarioRegistro() {
+    public function UsuarioRegistro()
+    {
         return view('Usuario.UsuarioRegistro');
+    }
+
+    public function Registro(Request $request)
+    {
+        //$input = Input::only('Usuario', 'Contrasena');
+        //$name = $request->Usuario;
+        $Solicitud = $request->all();
+        //echo $Solicitud['Usuario'] . "<br>";
+        //echo $Solicitud['Contrasena'] . "<br>";
+
+        $Personal = Personal::all();
+        foreach ($Personal as $Per) {
+            //echo $Per['ci_per'];
+            if ($Solicitud['Usuario'] == $Per['ci_per'] && $Solicitud['Contrasena'] == $Per['fechanacimiento_per'] ) {
+                //echo $Per['ci_per']." - ".$Per['fechanacimiento_per'];
+                $Usu = $Solicitud['Usuario'];
+                return view('/Principal.Suma')->with('Usu', $Usu);
+            }
+        }
+        //$Personal = $Personal[0];
+        //return $Personal['ci_per']." - ".$Personal['fechanacimiento_per'];
+        return 'Error';
     }
 
     /**
@@ -37,7 +62,7 @@ class UsuarioRegistroController extends Controller {
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -48,7 +73,7 @@ class UsuarioRegistroController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -59,7 +84,7 @@ class UsuarioRegistroController extends Controller {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -70,8 +95,8 @@ class UsuarioRegistroController extends Controller {
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -82,7 +107,7 @@ class UsuarioRegistroController extends Controller {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

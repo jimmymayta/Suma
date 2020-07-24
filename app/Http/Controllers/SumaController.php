@@ -13,8 +13,8 @@ class SumaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function Suma() {
-        $products['products'] = Usuarios::all();
-        return view('Principal.Suma', $products);
+        //$products['products'] = Usuarios::all();
+        return view('Principal.Suma');
 
         //$data['products'] = Product::orderBy('id','desc')->paginate(10);
 

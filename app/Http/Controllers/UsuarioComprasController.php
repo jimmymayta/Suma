@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class UsuarioComprasController extends Controller {
     public function UsuarioCompras() {
-        $products['products'] = Usuarios::all();
-        return view('Principal.Compras', $products);
+        //$products['products'] = Usuarios::all();
+        return view('Principal.Compras');
 
         //$data['products'] = Product::orderBy('id','desc')->paginate(10);
 

@@ -10,27 +10,121 @@ DROP USER "Suma";
 \connect SumaDatabase Suma localhost 5432
 \connect postgres postgres localhost 5432
 
+psql -U Suma -d SumaDatabase -h localhost -p 5432
 
-CREATE SEQUENCE SecPersonal
-START WITH 1
-INCREMENT BY 1
+CREATE TABLE Estados (
+    ID_Est INTEGER NOT NULL UNIQUE,
+    Estado_Est VARCHAR(128) NOT NULL,
+    Descripcion_Est VARCHAR(300) NULL,
+    FechaCreacion_Est TIMESTAMP(0) NOT NULL,
+    FechaActualizacion_Est TIMESTAMP(0) NOT NULL,
+    FechaEliminacion_Est TIMESTAMP(0) NOT NULL
+);
+INSERT INTO Estados(ID_Est, Estado_Est, Descripcion_Est, FechaCreacion_Est, FechaActualizacion_Est,FechaEliminacion_Est)
+VALUES (1, 'Activado', 'Para estados que estan activos, activados o iniciados', '2020-07-24 12:07:01', '2020-07-24 12:07:01', '2020-07-24 12:07:01'),
+       (2, 'Desactivado', 'Para estados que estan desactivados, para aquellos que estan eliminados, o para quitar', '2020-07-24 12:07:01', '2020-07-24 12:07:01', '2020-07-24 12:07:01');
+
+CREATE SEQUENCE SecDepartamento
+INCREMENT 1
+START 1
 MINVALUE 1;
 
+CREATE TABLE Departamentos (
+    ID_Dep INTEGER NOT NULL UNIQUE DEFAULT nextval('SecDepartamento'),
+    Departamento_Dep VARCHAR(128) NOT NULL,
+    FechaCreacion_Dep TIMESTAMP NOT NULL,
+    FechaActualizacion TIMESTAMP NOT NULL,
+    FechaEliminacion TIMESTAMP NOT NULL,
+    CONSTRAINT PKID_Dep PRIMARY KEY (ID_Dep)
+);
+INSERT INTO Departamentos(Departamento_Dep, FechaCreacion_Dep, FechaActualizacion, FechaEliminacion)
+VALUES ('Beni', '2020-07-24 12:07:01', '2020-07-24 12:07:01', '2020-07-24 12:07:01'),
+       ('Chuquisaca', '2020-07-24 12:07:01', '2020-07-24 12:07:01', '2020-07-24 12:07:01'),
+       ('Cochabamba', '2020-07-24 12:07:01', '2020-07-24 12:07:01', '2020-07-24 12:07:01'),
+       ('La Paz', '2020-07-24 12:07:01', '2020-07-24 12:07:01', '2020-07-24 12:07:01'),
+       ('Oruro', '2020-07-24 12:07:01', '2020-07-24 12:07:01', '2020-07-24 12:07:01'),
+       ('Pando', '2020-07-24 12:07:01', '2020-07-24 12:07:01', '2020-07-24 12:07:01'),
+       ('Potosi', '2020-07-24 12:07:01', '2020-07-24 12:07:01', '2020-07-24 12:07:01'),
+       ('Santa Cruz', '2020-07-24 12:07:01', '2020-07-24 12:07:01', '2020-07-24 12:07:01'),
+       ('Tarija', '2020-07-24 12:07:01', '2020-07-24 12:07:01', '2020-07-24 12:07:01');
+
+CREATE TABLE Generos (
+    ID_Gen INTEGER NOT NULL UNIQUE,
+    Genero_Gen VARCHAR(128) NOT NULL,
+    Descripcion_Gen VARCHAR(300) NULL,
+    FechaCreacion_Gen TIMESTAMP(0) NOT NULL,
+    FechaActualizacion_Gen TIMESTAMP(0) NOT NULL,
+    CONSTRAINT PKID_Gen PRIMARY KEY (ID_Gen)
+);
+INSERT INTO Generos VALUES (1, 'Femenino', '', '2020-07-24 12:07:01', '2020-07-24 12:07:01');
+INSERT INTO Generos VALUES (2, 'Masculino', '', '2020-07-24 12:07:01', '2020-07-24 12:07:01');
+
+CREATE SEQUENCE SecPersonal
+INCREMENT 1
+START 1
+MINVALUE 1;
+
+
 CREATE TABLE Personal (
-  ID_Per INTEGER NOT NULL DEFAULT nextval('SecPersonal'),
-  ID_Usu INTEGER NOT NULL UNIQUE,
-  CI_Per VARCHAR(128) NOT NULL UNIQUE,
-  ID_Dep INTEGER NOT NULL,
-  Nombres_Per VARCHAR(300) NOT NULL,
-  Apellidos_Per VARCHAR(300) NOT NULL,
-  ID_Gen INTEGER NOT NULL,
-  Imagen_Per VARCHAR(1024) NULL,
-  CelTel_Per VARCHAR(128) NOT NULL UNIQUE ,
-  Mail_Per VARCHAR(128) NOT NULL UNIQUE,
-  ID_Gru INTEGER NOT NULL,
+    ID_Per INTEGER NOT NULL DEFAULT nextval('SecPersonal'),
+    ID_Usu INTEGER NOT NULL UNIQUE,
+    CI_Per VARCHAR(128) NOT NULL UNIQUE,
+    IDDep_Per INTEGER NOT NULL,
+    Nombres_Per VARCHAR(300) NOT NULL,
+    Apellidos_Per VARCHAR(300) NOT NULL,
+    IDGen_Per INTEGER NOT NULL,
+    Imagen_Per VARCHAR(1024) NULL,
+    FechaNacimiento_Per DATE NOT NULL,
+    CelTel_Per VARCHAR(128) NOT NULL UNIQUE,
+    Mail_Per VARCHAR(128) NOT NULL UNIQUE,
+    IDEst_Per INTEGER NOT NULL,
+    ID_Gru INTEGER NOT NULL,
+    IDPer_Per INTEGER NOT NULL,
+    CONSTRAINT PKID_Per PRIMARY KEY (ID_Per),
+    CONSTRAINT FKID_Gen FOREIGN KEY (IDGen_Per) REFERENCES Generos(ID_Gen),
+    CONSTRAINT FKIDEst_Per FOREIGN KEY (IDEst_Per) REFERENCES Estados(ID_Est),
+    CONSTRAINT FKIDPer_Per FOREIGN KEY (IDPer_Per) REFERENCES Personal(ID_Per)
+);
+INSERT INTO Personal(ID_Per, ID_Usu, CI_Per, IDDep_Per, Nombres_Per, Apellidos_Per, IDGen_Per, Imagen_Per, FechaNacimiento_Per, CelTel_Per, Mail_Per, IDEst_Per, ID_Gru, IDPer_Per)
+VALUES (1, 1, '12378437', 1, 'Juana', 'M', 1, '', '1993-12-12', '67747474', 'maria@gmail.com', 1, 1, 1);
+
+INSERT INTO Personal(ID_Usu, CI_Per, IDDep_Per, Nombres_Per, Apellidos_Per, IDGen_Per, Imagen_Per, FechaNacimiento_Per, CelTel_Per, Mail_Per, IDEst_Per, ID_Gru, IDPer_Per)
+VALUES (2, '231231231', 1, 'Elena', 'M', 1, '', '1993-12-13', '677474274', 'marisa@gmail.com', 1, 1, 1);
+
+
+CREATE SEQUENCE SecUsuario
+    INCREMENT 1 START 1 MINVALUE 1;
+
+CREATE TABLE Usuarios (
+    ID_Usu INTEGER NOT NULL UNIQUE,
+    Usuarios_Usu VARCHAR(300) NOT NULL,
+    Contrasena_Usu VARCHAR(300) NOT NULL,
+    IDEst_Usu INTEGER NOT NULL,
+    IDPer_Usu INTEGER NOT NULL,
+    CONSTRAINT PKID_Usu PRIMARY KEY (ID_Usu),
+    CONSTRAINT FKIDPer_Usu FOREIGN KEY (IDPer_Usu) REFERENCES Personal(ID_Per)
+);
+INSERT INTO Usuarios VALUES (1, '12378437', '1993-12-12', 1, 1);
+
+CREATE TABLE public."EstadosPrueba"
+(
+    "IDEst" integer[],
+    "EstadoEst" character varying(128)[] NOT NULL,
+    "FechaEst" timestamp(0) with time zone[] NOT NULL,
+    PRIMARY KEY ("IDEst")
 );
 
+ALTER TABLE public."EstadosPrueba"
+    OWNER to "Suma";
 
+CREATE SEQUENCE public."SecUSU"
+    INCREMENT 3
+    START 1
+    MINVALUE 1
+    MAXVALUE 999;
+
+ALTER SEQUENCE public."SecUSU"
+    OWNER TO "Suma";
 
 CREATE tabla_ejemplo (
                          clave int4  NOT NULL ,

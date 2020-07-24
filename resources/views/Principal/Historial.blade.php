@@ -40,13 +40,13 @@
     </div>
     <br>
 
-    @foreach($products as $pro)
+{{--    @foreach($products as $pro)--}}
         <div class="card">
             <div class="card-body">
-                {{ $pro->id }}. {{ $pro->nombres }} {{ $pro->apellidos }}<br>Mira tu historial, aca podras manejar un control sobre todos tus productos compradoss
+{{--                {{ $pro->id }}. {{ $pro->nombres }} {{ $pro->apellidos }}<br>Mira tu historial, aca podras manejar un control sobre todos tus productos compradoss--}}
             </div>
         </div>
-    @endforeach
+{{--    @endforeach--}}
 </div>
 
 <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>

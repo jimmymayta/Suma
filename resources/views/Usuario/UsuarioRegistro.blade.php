@@ -12,6 +12,14 @@
 <body>
 <h1>Regsitros de ususario</h1><br>
 
+<form action="/RegistroUsuario" method="post">
+    @csrf
+    <label for="">Usuarios</label>
+    <input type="text" name="Usuario"><br>
+    <label for="">Contrasena</label>
+    <input type="text" name="Contrasena">
+    <input type="submit">
+</form>
 <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
