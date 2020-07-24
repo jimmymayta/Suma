@@ -4,23 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Usuarios;
-
-class SumaController extends Controller {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function Suma() {
-        $products['products'] = Usuarios::all();
-        return view('Principal.Suma', $products);
-
-        //$data['products'] = Product::orderBy('id','desc')->paginate(10);
-
-        //return view('product.list',$data);
-    }
-
+class UsuarioProductorController extends Controller
+{
     /**
      * Display a listing of the resource.
      *

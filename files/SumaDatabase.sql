@@ -11,9 +11,31 @@ DROP USER "Suma";
 \connect postgres postgres localhost 5432
 
 
+CREATE SEQUENCE SecPersonal
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1;
+
 CREATE TABLE Personal (
-  ID_Per INTEGER NOT NULL,
+  ID_Per INTEGER NOT NULL DEFAULT nextval('SecPersonal'),
+  ID_Usu INTEGER NOT NULL UNIQUE,
+  CI_Per VARCHAR(128) NOT NULL UNIQUE,
+  ID_Dep INTEGER NOT NULL,
+  Nombres_Per VARCHAR(300) NOT NULL,
+  Apellidos_Per VARCHAR(300) NOT NULL,
+  ID_Gen INTEGER NOT NULL,
+  Imagen_Per VARCHAR(1024) NULL,
+  CelTel_Per VARCHAR(128) NOT NULL UNIQUE ,
+  Mail_Per VARCHAR(128) NOT NULL UNIQUE,
+  ID_Gru INTEGER NOT NULL,
 );
+
+
+
+CREATE tabla_ejemplo (
+                         clave int4  NOT NULL ,
+                         ....
+                         PRIMARY KEY (clave)) ;
 
 CREATE TABLE "user" (
   id SERIAL PRIMARY KEY,

@@ -17,16 +17,14 @@ use Illuminate\Support\Facades\Route;
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'SumaController@Suma');
-Route::get('/Login', 'LoginController@Login');
+Route::get('/', 'SumaController@Suma')->name('/'); //Pagina principal para usuarios no logueados
+Route::get('/Login', 'LoginController@Login')->name('Login'); //Login de usuario
+Route::get('/Suma', 'SumaController@Suma')->name('/'); //Pagina Principal para usuario logueados
+Route::get('/Registro', 'UsuarioRegistroController@UsuarioRegistro')->name('Registro'); //pagina de registor de usuario, lo cual va varios cambios
+Route::get('/Suma.Information', 'InformationController@Information')->name('Suma.Information');
 
-
-
-
-
-
-
-
+Route::get('/Compras', 'UsuarioComprasController@UsuarioCompras')->name('Compras'); // ruta compras - Prueba
+Route::get('/Historial', 'UsuarioHistorialController@UsuarioHistorial')->name('Historia'); //ruta Historial - prueba
 
 
 

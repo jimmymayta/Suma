@@ -1,11 +1,17 @@
 NOtas.
 
-/Suma -> Principal
+/ -> Principal
+/Registro -> Usuarios
 /Login -> Login
+/Suma -> Principal
+
+/Productor
+
+/Productos
 
 
 
-Registro->Usuarios
+
 Roles
 
 Productos
@@ -19,12 +25,20 @@ Login
 Productos
 Ventas
 
+-------------------------------------------------
+url
+provedor
+
+Productor
+Consumidor
+-------------------------------------------------
 
 
+url
+provedor
 
-
-
-
+Productor
+Consumidor
 
 
 
