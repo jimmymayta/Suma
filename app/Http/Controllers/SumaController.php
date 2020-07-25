@@ -12,20 +12,19 @@ class SumaController extends Controller {
         return view('/Principal.Suma');
     }
 
-    public function Suma(Request $request) {
-        $Solicitud = $request->all();
+    public function Suma() {
+        //$Solicitud = $request->all();
 
-        $Personal = Personal::all();
-        foreach ($Personal as $Per) {
-            //echo $Per['ci_per'];
-            if ($Solicitud['Usuario'] == $Per['ci_per'] && $Solicitud['Contrasena'] == $Per['fechanacimiento_per'] ) {
-                //echo $Per['ci_per']." - ".$Per['fechanacimiento_per'];
-                $Usu = $Solicitud['Usuario'];
-                //return view('/Principal.Suma')->with('Usu', $Usu);
-            }
-        }
-
-        return view('Principal');
+        //$Personal = Personal::all();
+        //foreach ($Personal as $Per) {
+        //   //echo $Per['ci_per'];
+        //    if ($Solicitud['Usuario'] == $Per['ci_per'] && $Solicitud['Contrasena'] == $Per['fechanacimiento_per'] ) {
+        //        //echo $Per['ci_per']." - ".$Per['fechanacimiento_per'];
+        //        $Usu = $Solicitud['Usuario'];
+        //        //return view('/Principal.Suma')->with('Usu', $Usu);
+        //    }
+        //}
+        return view('Principal.Suma');
     }
 
 

@@ -12,31 +12,16 @@ class UsuarioRegistroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function UsuarioRegistro()
+    public function UsuarioRegistro(Request $request)
     {
-        return 'UsuarioRegistro';
+        $Solicitud = $request->all();
+
+        return var_dump($Solicitud);
     }
 
-    public function Registro(Request $request)
+    public function Registro()
     {
-        //$input = Input::only('Usuario', 'Contrasena');
-        //$name = $request->Usuario;
-        $Solicitud = $request->all();
-        //echo $Solicitud['Usuario'] . "<br>";
-        //echo $Solicitud['Contrasena'] . "<br>";
-
-        $Personal = Personal::all();
-        foreach ($Personal as $Per) {
-            //echo $Per['ci_per'];
-            if ($Solicitud['Usuario'] == $Per['ci_per'] && $Solicitud['Contrasena'] == $Per['fechanacimiento_per'] ) {
-                //echo $Per['ci_per']." - ".$Per['fechanacimiento_per'];
-                $Usu = $Solicitud['Usuario'];
-                return view('/Principal.Suma')->with('Usu', $Usu);
-            }
-        }
-        //$Personal = $Personal[0];
-        //return $Personal['ci_per']." - ".$Personal['fechanacimiento_per'];
-        return 'Error';
+        return view('Usuario.UsuarioRegistro');
     }
 
     /**

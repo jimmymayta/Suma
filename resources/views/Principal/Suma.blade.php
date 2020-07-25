@@ -10,6 +10,7 @@
 <body><br>
 <div class="container">
     <a href="{{ route('Login') }}">Ingresar</a>
+    <a href="{{ route('Registro') }}">Registrate</a>
     <div class="card text-center">
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">

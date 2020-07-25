@@ -6,6 +6,8 @@ use App\Usuarios;
 use App\Personal;
 use Illuminate\Http\Request;
 //use App\Http\Controllers\SumaController;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller {
     /**
@@ -26,13 +28,17 @@ class LoginController extends Controller {
             // 231231231 1993-12-13
             if ($Solicitud['Usuario'] == $Per['ci_per'] && $Solicitud['Contrasena'] == $Per['fechanacimiento_per'] ) {
                 //echo $Per['ci_per']." - ".$Per['fechanacimiento_per'];
-                var_dump($Personal[0]);
-                echo 'Correcto';
+                $Personal = array($Per['id_per'], $Per['id_usu'], $Per['ci_per'], $Per['iddep_per'],
+                    $Per['nombres_per'], $Per['apellidos_per'], $Per['idgen_per'], $Per['imagen_per'],
+                    $Per['fechanacimiento_per'], $Per['celtel_per'], $Per['mail_per'], $Per['idest_per'],
+                    $Per['id_gru'], $Per['idper_per']);
+                //protected $redirectTo = RouteServiceProvider::HOME;
                 //return view('/Principal.Suma')->with('Usu', $Usu);
+                return redirect()->action('SumaController@Suma');
+
             }
         }
-
-        return 'Error';
+        return 'sds';
 
     }
     /**

@@ -21,9 +21,8 @@ Route::get('/', 'SumaController@Principal')->name('/'); //Pagina principal para 
 Route::get('/Suma', 'SumaController@Suma')->name('Suma'); //Pagina Principal para usuario logueados
 Route::get('/Login', 'LoginController@Login')->name('Login'); //Login de usuario
 Route::post('/Auto', 'LoginController@Auto')->name('Auto'); //pagina de registor de usuario, lo cual va varios cambios
-//
-//Route::post('/RegistroUsuario', 'UsuarioRegistroController@Registro')->name('RegistroUsuario');
-//
+Route::get('/Registro', 'UsuarioRegistroController@Registro')->name('Registro');
+Route::post('/RegistroUsuario', 'UsuarioRegistroController@UsuarioRegistro')->name('Registro');
 Route::get('/Compras', 'UsuarioComprasController@UsuarioCompras')->name('Compras'); // ruta compras - Prueba
 Route::get('/Historial', 'UsuarioHistorialController@UsuarioHistorial')->name('Historia'); //ruta Historial - prueba
 //

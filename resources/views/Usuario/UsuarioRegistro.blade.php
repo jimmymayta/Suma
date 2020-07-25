@@ -14,10 +14,23 @@
 
 <form action="/RegistroUsuario" method="post">
     @csrf
-    <label for="">Usuarios</label>
-    <input type="text" name="Usuario"><br>
-    <label for="">Contrasena</label>
-    <input type="text" name="Contrasena">
+    <label for="">Nombre</label>
+    <input type="text" name="Nombres" required><br>
+    <label for="">Apellidos</label>
+    <input type="text" name="Apellidos" required><br>
+    <label for="">genero</label>
+    <select name="Genero" required>
+        <option value='1'>Femenino</option>
+        <option value='2'>Masculino</option>
+    </select><br>
+    <label for="">Imagen</label>
+    <input type="file" name="Imagen"><br>
+    <label for="">Fecha nacimiento</label>
+    <input type="date" value="" name="FechaNacimiento" required><br>
+    <label for="">Celular o telefono</label>
+    <input type="number" name="CelTel" required><br>
+    <label for="">Correo electronico</label>
+    <input type="email" name="Mail" required><br>
     <input type="submit">
 </form>
 <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
