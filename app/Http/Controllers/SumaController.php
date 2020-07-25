@@ -5,21 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Usuarios;
+use App\Personal;
 
 class SumaController extends Controller {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function Suma() {
-        //$products['products'] = Usuarios::all();
-        return view('Principal.Suma');
-
-        //$data['products'] = Product::orderBy('id','desc')->paginate(10);
-
-        //return view('product.list',$data);
+    public function Principal() {
+        return view('/Principal.Suma');
     }
+
+    public function Suma(Request $request) {
+        $Solicitud = $request->all();
+
+        $Personal = Personal::all();
+        foreach ($Personal as $Per) {
+            //echo $Per['ci_per'];
+            if ($Solicitud['Usuario'] == $Per['ci_per'] && $Solicitud['Contrasena'] == $Per['fechanacimiento_per'] ) {
+                //echo $Per['ci_per']." - ".$Per['fechanacimiento_per'];
+                $Usu = $Solicitud['Usuario'];
+                //return view('/Principal.Suma')->with('Usu', $Usu);
+            }
+        }
+
+        return view('Principal');
+    }
+
+
 
     /**
      * Display a listing of the resource.

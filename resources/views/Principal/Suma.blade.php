@@ -9,7 +9,7 @@
 </head>
 <body><br>
 <div class="container">
-    <a href="{{ route('Registro') }}">Registro</a>
+    <a href="{{ route('Login') }}">Ingresar</a>
     <div class="card text-center">
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
@@ -27,10 +27,6 @@
 
             </ul>
         </div>
-        <?php
-            $Dat = isset($Usu)?$Usu:null;
-            echo $Dat;
-        ?>
         <div class="card-body">
             <h5 class="card-title">Special title treatment</h5>
             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>

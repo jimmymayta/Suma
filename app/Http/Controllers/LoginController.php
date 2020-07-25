@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Usuarios;
+use App\Personal;
 use Illuminate\Http\Request;
+//use App\Http\Controllers\SumaController;
 
 class LoginController extends Controller {
     /**
@@ -11,9 +14,27 @@ class LoginController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function Login() {
-        return view('Login');
+        return view('Principal.Login');
     }
 
+    public function Auto(Request $request) {
+        $Solicitud = $request->all();
+
+        $Personal = Personal::all();
+        foreach ($Personal as $Per) {
+            //echo $Per['ci_per'];
+            // 231231231 1993-12-13
+            if ($Solicitud['Usuario'] == $Per['ci_per'] && $Solicitud['Contrasena'] == $Per['fechanacimiento_per'] ) {
+                //echo $Per['ci_per']." - ".$Per['fechanacimiento_per'];
+                var_dump($Personal[0]);
+                echo 'Correcto';
+                //return view('/Principal.Suma')->with('Usu', $Usu);
+            }
+        }
+
+        return 'Error';
+
+    }
     /**
      * Display a listing of the resource.
      *

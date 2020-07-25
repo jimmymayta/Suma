@@ -63,8 +63,6 @@ CREATE SEQUENCE SecPersonal
 INCREMENT 1
 START 1
 MINVALUE 1;
-
-
 CREATE TABLE Personal (
     ID_Per INTEGER NOT NULL DEFAULT nextval('SecPersonal'),
     ID_Usu INTEGER NOT NULL UNIQUE,
@@ -85,11 +83,12 @@ CREATE TABLE Personal (
     CONSTRAINT FKIDEst_Per FOREIGN KEY (IDEst_Per) REFERENCES Estados(ID_Est),
     CONSTRAINT FKIDPer_Per FOREIGN KEY (IDPer_Per) REFERENCES Personal(ID_Per)
 );
-INSERT INTO Personal(ID_Per, ID_Usu, CI_Per, IDDep_Per, Nombres_Per, Apellidos_Per, IDGen_Per, Imagen_Per, FechaNacimiento_Per, CelTel_Per, Mail_Per, IDEst_Per, ID_Gru, IDPer_Per)
-VALUES (1, 1, '12378437', 1, 'Juana', 'M', 1, '', '1993-12-12', '67747474', 'maria@gmail.com', 1, 1, 1);
 
 INSERT INTO Personal(ID_Usu, CI_Per, IDDep_Per, Nombres_Per, Apellidos_Per, IDGen_Per, Imagen_Per, FechaNacimiento_Per, CelTel_Per, Mail_Per, IDEst_Per, ID_Gru, IDPer_Per)
 VALUES (2, '231231231', 1, 'Elena', 'M', 1, '', '1993-12-13', '677474274', 'marisa@gmail.com', 1, 1, 1);
+
+INSERT INTO Personal(ID_Usu, CI_Per, IDDep_Per, Nombres_Per, Apellidos_Per, IDGen_Per, Imagen_Per, FechaNacimiento_Per, CelTel_Per, Mail_Per, IDEst_Per, ID_Gru, IDPer_Per)
+VALUES (3, '231233231231', 1, 'Maria', 'M', 1, '', '1993-12-14', '6774742274', 'marirrr@gmail.com', 1, 1, 1);
 
 
 CREATE SEQUENCE SecUsuario
@@ -105,6 +104,41 @@ CREATE TABLE Usuarios (
     CONSTRAINT FKIDPer_Usu FOREIGN KEY (IDPer_Usu) REFERENCES Personal(ID_Per)
 );
 INSERT INTO Usuarios VALUES (1, '12378437', '1993-12-12', 1, 1);
+INSERT INTO Usuarios VALUES (2, '12378437', '1993-12-13', 1, 1);
+INSERT INTO Usuarios VALUES (3, '12378437', '1993-12-14', 1, 1);
+
+CREATE TABLE Productos(
+    ID_Pro INTEGER NOT NULL UNIQUE,
+    IDPer_Pro INTEGER NOT NULL,
+    Producto_Pro VARCHAR(128) NOT NULL,
+    Imagen_Pro VARCHAR(300) NOT NULL,
+    Descripcion_Pro VARCHAR(128) NULL,
+    FechaCreacion_Pro TIMESTAMP NOT NULL,
+    FechaActualizacion TIMESTAMP NOT NULL,
+    FechaEliminacion TIMESTAMP NOT NULL,
+    CONSTRAINT PKID_Pro PRIMARY KEY (ID_Pro),
+    CONSTRAINT FKIDPer_Pro FOREIGN KEY (IDPer_Pro) REFERENCES Personal(ID_Per)
+);
+
+CREATE TABLE Mercado (
+    ID_Mer INTEGER NOT NULL UNIQUE,
+    IDPro_Mer INTEGER NOT NULL,
+    Descripcion_Mer VARCHAR(300) NOT NULL,
+    FechaRegistro_Mer TIMESTAMP NOT NULL,
+    FechaCreacion_Mer TIMESTAMP NOT NULL,
+    CONSTRAINT PKID_Mer PRIMARY KEY (ID_Mer),
+    CONSTRAINT FKIDPro_Mer FOREIGN KEY (IDPro_Mer) REFERENCES Productos(ID_Pro)
+);
+
+
+
+
+
+
+
+
+
+
 
 CREATE TABLE public."EstadosPrueba"
 (

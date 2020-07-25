@@ -14,7 +14,7 @@ class UsuarioRegistroController extends Controller
      */
     public function UsuarioRegistro()
     {
-        return view('Usuario.UsuarioRegistro');
+        return 'UsuarioRegistro';
     }
 
     public function Registro(Request $request)

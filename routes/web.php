@@ -13,21 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () { return view('welcome'); });
-// Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/', function () { return view('welcome'); });
+//Auth::routes();
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'SumaController@Suma')->name('/'); //Pagina principal para usuarios no logueados
+Route::get('/', 'SumaController@Principal')->name('/'); //Pagina principal para usuarios no logueados
+Route::get('/Suma', 'SumaController@Suma')->name('Suma'); //Pagina Principal para usuario logueados
 Route::get('/Login', 'LoginController@Login')->name('Login'); //Login de usuario
-Route::get('/Suma', 'SumaController@Suma')->name('/'); //Pagina Principal para usuario logueados
-Route::get('/Registro', 'UsuarioRegistroController@UsuarioRegistro')->name('Registro'); //pagina de registor de usuario, lo cual va varios cambios
-
-Route::post('/RegistroUsuario', 'UsuarioRegistroController@Registro')->name('RegistroUsuario');
-
-Route::get('/Suma.Information', 'InformationController@Information')->name('Suma.Information');
-
+Route::post('/Auto', 'LoginController@Auto')->name('Auto'); //pagina de registor de usuario, lo cual va varios cambios
+//
+//Route::post('/RegistroUsuario', 'UsuarioRegistroController@Registro')->name('RegistroUsuario');
+//
 Route::get('/Compras', 'UsuarioComprasController@UsuarioCompras')->name('Compras'); // ruta compras - Prueba
 Route::get('/Historial', 'UsuarioHistorialController@UsuarioHistorial')->name('Historia'); //ruta Historial - prueba
+//
+//Route::get('/Suma.Information', 'InformationController@Information')->name('Suma.Information');
 
 
 
@@ -42,4 +42,6 @@ Route::get('/Historial', 'UsuarioHistorialController@UsuarioHistorial')->name('H
 
 
 
+Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
