@@ -22,7 +22,7 @@ Route::get('/Suma', 'SumaController@Suma')->name('Suma'); //Pagina Principal par
 Route::get('/Login', 'LoginController@Login')->name('Login'); //Login de usuario
 Route::post('/Auto', 'LoginController@Auto')->name('Auto'); //pagina de registor de usuario, lo cual va varios cambios
 Route::get('/Registro', 'UsuarioRegistroController@Registro')->name('Registro');
-Route::post('/RegistroUsuario', 'UsuarioRegistroController@UsuarioRegistro')->name('Registro');
+Route::post('/RegistroUsuario', 'UsuarioRegistroController@UsuarioRegistro')->name('UsuarioRegistro');
 Route::get('/Compras', 'UsuarioComprasController@UsuarioCompras')->name('Compras'); // ruta compras - Prueba
 Route::get('/Historial', 'UsuarioHistorialController@UsuarioHistorial')->name('Historia'); //ruta Historial - prueba
 //
