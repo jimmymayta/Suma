@@ -24,7 +24,7 @@
         <option value='2'>Masculino</option>
     </select><br>
     <label for="">Imagen</label>
-    <input type="file" name="Imagen"><br>
+    <input src type="file" name="Imagen"><br>
     <label for="">Fecha nacimiento</label>
     <input type="date" value="" name="FechaNacimiento" required><br>
     <label for="">Celular o telefono</label>

@@ -35,10 +35,9 @@ class LoginController extends Controller {
                 //protected $redirectTo = RouteServiceProvider::HOME;
                 //return view('/Principal.Suma')->with('Usu', $Usu);
                 return redirect()->action('SumaController@Suma');
-
             }
         }
-        return 'sds';
+        return 'Error de ususario : prueba con usuario:231231231  y password:1993-12-13';
 
     }
     /**

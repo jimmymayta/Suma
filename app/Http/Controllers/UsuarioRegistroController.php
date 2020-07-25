@@ -14,9 +14,30 @@ class UsuarioRegistroController extends Controller
      */
     public function UsuarioRegistro(Request $request)
     {
-        $Solicitud = $request->all();
+        //$Solicitud = $request->all();
+        //echo $Solicitud['Nombres'];
+        //$Personal = new Personal;
+        //$Personal->id_usu = 1;
+        //$Personal->nombres_per = $Solicitud['Nombres'];
+        //$Personal->save();
+        echo "Registro en proceso";
 
-        return var_dump($Solicitud);
+        //$request->file('Images')->store('public');
+        //dd("subido y guardado");
+        //$image = $request->file('Imagen');
+        //$image->move(public_path("ImagesUser/"), $image->getClientOriginalName());
+
+        //$user = new Categorias($request->all());
+        //if ($request->hasFile('Imagen')){
+         //   $file = $request->file("Imagen");
+        //    //$nombrearchivo  = str_slug($request->slug).".".$file->getClientOriginalExtension();
+        //    $nombrearchivo  = $file->getClientOriginalName();
+         //   $file->move(public_path("ImagesUser/"),$nombrearchivo);
+        //    //$user->Imagen = $nombrearchivo;
+        //}
+        //$Solicitud = $request->all();
+
+        //return var_dump($request);
     }
 
     public function Registro()
