@@ -18,6 +18,18 @@
     <input type="text" name="Nombres" required><br>
     <label for="">Apellidos</label>
     <input type="text" name="Apellidos" required><br>
+    <label for="">Cedula de Identidad</label>
+    <input type="text" name="CI" placeholder="CI"><select name="Departamento" required>
+        <option value='1'>Beni</option>
+        <option value='2'>Chuquisaca</option>
+        <option value='3'>Cochabamba</option>
+        <option value='4'>La Paz</option>
+        <option value='5'>Oruro</option>
+        <option value='6'>Pando</option>
+        <option value='7'>Potosí</option>
+        <option value='8'>Santa Cruz</option>
+        <option value='9'>Tarija</option>
+    </select><br>
     <label for="">genero</label>
     <select name="Genero" required>
         <option value='1'>Femenino</option>

@@ -95,21 +95,6 @@ CREATE TABLE public.generos (
 ALTER TABLE public.generos OWNER TO "Suma";
 
 --
--- Name: mercado; Type: TABLE; Schema: public; Owner: Suma
---
-
-CREATE TABLE public.mercado (
-    id_mer integer NOT NULL,
-    idpro_mer integer NOT NULL,
-    descripcion_mer character varying(300) NOT NULL,
-    fecharegistro_mer timestamp without time zone NOT NULL,
-    fechacreacion_mer timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public.mercado OWNER TO "Suma";
-
---
 -- Name: secpersonal; Type: SEQUENCE; Schema: public; Owner: Suma
 --
 
@@ -140,30 +125,11 @@ CREATE TABLE public.personal (
     celtel_per character varying(128) NOT NULL,
     mail_per character varying(128) NOT NULL,
     idest_per integer NOT NULL,
-    id_gru integer NOT NULL,
-    idper_per integer NOT NULL
+    id_gru integer NOT NULL
 );
 
 
 ALTER TABLE public.personal OWNER TO "Suma";
-
---
--- Name: productos; Type: TABLE; Schema: public; Owner: Suma
---
-
-CREATE TABLE public.productos (
-    id_pro integer NOT NULL,
-    idper_pro integer NOT NULL,
-    producto_pro character varying(128) NOT NULL,
-    imagen_pro character varying(300) NOT NULL,
-    descripcion_pro character varying(128),
-    fechacreacion_pro timestamp without time zone NOT NULL,
-    fechaactualizacion timestamp without time zone NOT NULL,
-    fechaeliminacion timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public.productos OWNER TO "Suma";
 
 --
 -- Name: secusuario; Type: SEQUENCE; Schema: public; Owner: Suma
@@ -218,21 +184,6 @@ ALTER SEQUENCE public.user_id_seq OWNED BY public."user".id;
 
 
 --
--- Name: usuarios; Type: TABLE; Schema: public; Owner: Suma
---
-
-CREATE TABLE public.usuarios (
-    id_usu integer NOT NULL,
-    usuarios_usu character varying(300) NOT NULL,
-    contrasena_usu character varying(300) NOT NULL,
-    idest_usu integer NOT NULL,
-    idper_usu integer NOT NULL
-);
-
-
-ALTER TABLE public.usuarios OWNER TO "Suma";
-
---
 -- Name: user id; Type: DEFAULT; Schema: public; Owner: Suma
 --
 
@@ -277,28 +228,10 @@ COPY public.generos (id_gen, genero_gen, descripcion_gen, fechacreacion_gen, fec
 
 
 --
--- Data for Name: mercado; Type: TABLE DATA; Schema: public; Owner: Suma
---
-
-COPY public.mercado (id_mer, idpro_mer, descripcion_mer, fecharegistro_mer, fechacreacion_mer) FROM stdin;
-\.
-
-
---
 -- Data for Name: personal; Type: TABLE DATA; Schema: public; Owner: Suma
 --
 
-COPY public.personal (id_per, id_usu, ci_per, iddep_per, nombres_per, apellidos_per, idgen_per, imagen_per, fechanacimiento_per, celtel_per, mail_per, idest_per, id_gru, idper_per) FROM stdin;
-1	2	231231231	1	Elena	M	1		1993-12-13	677474274	marisa@gmail.com	1	1	1
-2	3	231233231231	1	Maria	M	1		1993-12-14	6774742274	marirrr@gmail.com	1	1	1
-\.
-
-
---
--- Data for Name: productos; Type: TABLE DATA; Schema: public; Owner: Suma
---
-
-COPY public.productos (id_pro, idper_pro, producto_pro, imagen_pro, descripcion_pro, fechacreacion_pro, fechaactualizacion, fechaeliminacion) FROM stdin;
+COPY public.personal (id_per, id_usu, ci_per, iddep_per, nombres_per, apellidos_per, idgen_per, imagen_per, fechanacimiento_per, celtel_per, mail_per, idest_per, id_gru) FROM stdin;
 \.
 
 
@@ -411,17 +344,6 @@ COPY public."user" (id, nombres, apellidos, usuario, password, fecha_registro) F
 
 
 --
--- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: Suma
---
-
-COPY public.usuarios (id_usu, usuarios_usu, contrasena_usu, idest_usu, idper_usu) FROM stdin;
-1	12378437	1993-12-12	1	1
-2	12378437	1993-12-13	1	1
-3	12378437	1993-12-14	1	1
-\.
-
-
---
 -- Name: secdepartamento; Type: SEQUENCE SET; Schema: public; Owner: Suma
 --
 
@@ -432,7 +354,7 @@ SELECT pg_catalog.setval('public.secdepartamento', 9, true);
 -- Name: secpersonal; Type: SEQUENCE SET; Schema: public; Owner: Suma
 --
 
-SELECT pg_catalog.setval('public.secpersonal', 3, true);
+SELECT pg_catalog.setval('public.secpersonal', 15, true);
 
 
 --
@@ -458,38 +380,6 @@ ALTER TABLE ONLY public.estados
 
 
 --
--- Name: personal personal_celtel_per_key; Type: CONSTRAINT; Schema: public; Owner: Suma
---
-
-ALTER TABLE ONLY public.personal
-    ADD CONSTRAINT personal_celtel_per_key UNIQUE (celtel_per);
-
-
---
--- Name: personal personal_ci_per_key; Type: CONSTRAINT; Schema: public; Owner: Suma
---
-
-ALTER TABLE ONLY public.personal
-    ADD CONSTRAINT personal_ci_per_key UNIQUE (ci_per);
-
-
---
--- Name: personal personal_id_usu_key; Type: CONSTRAINT; Schema: public; Owner: Suma
---
-
-ALTER TABLE ONLY public.personal
-    ADD CONSTRAINT personal_id_usu_key UNIQUE (id_usu);
-
-
---
--- Name: personal personal_mail_per_key; Type: CONSTRAINT; Schema: public; Owner: Suma
---
-
-ALTER TABLE ONLY public.personal
-    ADD CONSTRAINT personal_mail_per_key UNIQUE (mail_per);
-
-
---
 -- Name: departamentos pkid_dep; Type: CONSTRAINT; Schema: public; Owner: Suma
 --
 
@@ -506,35 +396,11 @@ ALTER TABLE ONLY public.generos
 
 
 --
--- Name: mercado pkid_mer; Type: CONSTRAINT; Schema: public; Owner: Suma
---
-
-ALTER TABLE ONLY public.mercado
-    ADD CONSTRAINT pkid_mer PRIMARY KEY (id_mer);
-
-
---
 -- Name: personal pkid_per; Type: CONSTRAINT; Schema: public; Owner: Suma
 --
 
 ALTER TABLE ONLY public.personal
     ADD CONSTRAINT pkid_per PRIMARY KEY (id_per);
-
-
---
--- Name: productos pkid_pro; Type: CONSTRAINT; Schema: public; Owner: Suma
---
-
-ALTER TABLE ONLY public.productos
-    ADD CONSTRAINT pkid_pro PRIMARY KEY (id_pro);
-
-
---
--- Name: usuarios pkid_usu; Type: CONSTRAINT; Schema: public; Owner: Suma
---
-
-ALTER TABLE ONLY public.usuarios
-    ADD CONSTRAINT pkid_usu PRIMARY KEY (id_usu);
 
 
 --
@@ -559,38 +425,6 @@ ALTER TABLE ONLY public.personal
 
 ALTER TABLE ONLY public.personal
     ADD CONSTRAINT fkidest_per FOREIGN KEY (idest_per) REFERENCES public.estados(id_est);
-
-
---
--- Name: personal fkidper_per; Type: FK CONSTRAINT; Schema: public; Owner: Suma
---
-
-ALTER TABLE ONLY public.personal
-    ADD CONSTRAINT fkidper_per FOREIGN KEY (idper_per) REFERENCES public.personal(id_per);
-
-
---
--- Name: productos fkidper_pro; Type: FK CONSTRAINT; Schema: public; Owner: Suma
---
-
-ALTER TABLE ONLY public.productos
-    ADD CONSTRAINT fkidper_pro FOREIGN KEY (idper_pro) REFERENCES public.personal(id_per);
-
-
---
--- Name: usuarios fkidper_usu; Type: FK CONSTRAINT; Schema: public; Owner: Suma
---
-
-ALTER TABLE ONLY public.usuarios
-    ADD CONSTRAINT fkidper_usu FOREIGN KEY (idper_usu) REFERENCES public.personal(id_per);
-
-
---
--- Name: mercado fkidpro_mer; Type: FK CONSTRAINT; Schema: public; Owner: Suma
---
-
-ALTER TABLE ONLY public.mercado
-    ADD CONSTRAINT fkidpro_mer FOREIGN KEY (idpro_mer) REFERENCES public.productos(id_pro);
 
 
 --

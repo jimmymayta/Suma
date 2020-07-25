@@ -65,30 +65,28 @@ START 1
 MINVALUE 1;
 CREATE TABLE Personal (
     ID_Per INTEGER NOT NULL DEFAULT nextval('SecPersonal'),
-    ID_Usu INTEGER NOT NULL UNIQUE,
-    CI_Per VARCHAR(128) NOT NULL UNIQUE,
+    ID_Usu INTEGER NOT NULL,
+    CI_Per VARCHAR(128) NOT NULL,
     IDDep_Per INTEGER NOT NULL,
     Nombres_Per VARCHAR(300) NOT NULL,
     Apellidos_Per VARCHAR(300) NOT NULL,
     IDGen_Per INTEGER NOT NULL,
     Imagen_Per VARCHAR(1024) NULL,
     FechaNacimiento_Per DATE NOT NULL,
-    CelTel_Per VARCHAR(128) NOT NULL UNIQUE,
-    Mail_Per VARCHAR(128) NOT NULL UNIQUE,
+    CelTel_Per VARCHAR(128) NOT NULL,
+    Mail_Per VARCHAR(128) NOT NULL,
     IDEst_Per INTEGER NOT NULL,
     ID_Gru INTEGER NOT NULL,
-    IDPer_Per INTEGER NOT NULL,
     CONSTRAINT PKID_Per PRIMARY KEY (ID_Per),
     CONSTRAINT FKID_Gen FOREIGN KEY (IDGen_Per) REFERENCES Generos(ID_Gen),
-    CONSTRAINT FKIDEst_Per FOREIGN KEY (IDEst_Per) REFERENCES Estados(ID_Est),
-    CONSTRAINT FKIDPer_Per FOREIGN KEY (IDPer_Per) REFERENCES Personal(ID_Per)
+    CONSTRAINT FKIDEst_Per FOREIGN KEY (IDEst_Per) REFERENCES Estados(ID_Est)
 );
 
-INSERT INTO Personal(ID_Usu, CI_Per, IDDep_Per, Nombres_Per, Apellidos_Per, IDGen_Per, Imagen_Per, FechaNacimiento_Per, CelTel_Per, Mail_Per, IDEst_Per, ID_Gru, IDPer_Per)
-VALUES (2, '231231231', 1, 'Elena', 'M', 1, '', '1993-12-13', '677474274', 'marisa@gmail.com', 1, 1, 1);
+INSERT INTO Personal(ID_Usu, CI_Per, IDDep_Per, Nombres_Per, Apellidos_Per, IDGen_Per, Imagen_Per, FechaNacimiento_Per, CelTel_Per, Mail_Per, IDEst_Per, ID_Gru)
+VALUES (2, '231231231', 1, 'Elena', 'M', 1, '', '1993-12-13', '677474274', 'marisa@gmail.com', 1, 1);
 
-INSERT INTO Personal(ID_Usu, CI_Per, IDDep_Per, Nombres_Per, Apellidos_Per, IDGen_Per, Imagen_Per, FechaNacimiento_Per, CelTel_Per, Mail_Per, IDEst_Per, ID_Gru, IDPer_Per)
-VALUES (3, '231233231231', 1, 'Maria', 'M', 1, '', '1993-12-14', '6774742274', 'marirrr@gmail.com', 1, 1, 1);
+INSERT INTO Personal(ID_Usu, CI_Per, IDDep_Per, Nombres_Per, Apellidos_Per, IDGen_Per, Imagen_Per, FechaNacimiento_Per, CelTel_Per, Mail_Per, IDEst_Per, ID_Gru)
+VALUES (3, '231233231231', 1, 'Maria', 'M', 1, '', '1993-12-14', '6774742274', 'marirrr@gmail.com', 1, 1);
 
 
 CREATE SEQUENCE SecUsuario

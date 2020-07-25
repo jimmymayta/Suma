@@ -14,13 +14,41 @@ class UsuarioRegistroController extends Controller
      */
     public function UsuarioRegistro(Request $request)
     {
+        $Solicitud = $request->all();
+        echo $Solicitud['Nombres']."<br>";
+        echo $Solicitud['Apellidos']."<br>";
+        echo $Solicitud['CI'];
+        echo $Solicitud['Departamento'];
+        echo $Solicitud['Genero']."<br>";
+        echo $Solicitud['Imagen']."<br>";
+        echo $Solicitud['FechaNacimiento']."<br>";
+        echo $Solicitud['CelTel']."<br>";
+        echo $Solicitud['Mail']."<br>";
+
+        $Personal = new Personal;
+        $Personal->id_usu = 1;
+        $Personal->ci_per = $Solicitud['CI'];
+        $Personal->iddep_per = $Solicitud['Departamento'];
+        $Personal->nombres_per = $Solicitud['Nombres'];
+        $Personal->apellidos_per = $Solicitud['Apellidos'];
+        $Personal->idgen_per = $Solicitud['Genero'];
+        $Personal->imagen_per = $Solicitud['Imagen'];
+        $Personal->fechanacimiento_per = $Solicitud['FechaNacimiento'];
+        $Personal->celtel_per = $Solicitud['CelTel'];
+        $Personal->mail_per = $Solicitud['Mail'];
+        $Personal->idest_per = 1;
+        $Personal->id_gru = 1;
+        $Personal->save();
+
+         return redirect()->action('SumaController@Principal');
+
         //$Solicitud = $request->all();
         //echo $Solicitud['Nombres'];
         //$Personal = new Personal;
         //$Personal->id_usu = 1;
         //$Personal->nombres_per = $Solicitud['Nombres'];
         //$Personal->save();
-        echo "Registro en proceso";
+        //echo "Registro en proceso";
 
         //$request->file('Images')->store('public');
         //dd("subido y guardado");

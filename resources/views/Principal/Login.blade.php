@@ -15,9 +15,9 @@
 <form action="/Auto" method="post">
     @csrf
     <label for="">Usuarios</label>
-    <input type="text" name="Usuario"><br>
+    <input type="text" name="Usuario" placeholder="CI"><br>
     <label for="">Contrasena</label>
-    <input type="text" name="Contrasena">
+    <input type="text" name="Contrasena" placeholder="2020-07-09">
     <input type="submit">
 </form>
 <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
